@@ -1,0 +1,15 @@
+services:
+  code-server:
+    image: codercom/code-server:latest
+    container_name: code-server
+    restart: unless-stopped
+    environment:
+      TZ: "Europe/Bucharest"
+      PASSWORD: "${CODE_SERVER_PASSWORD}"
+    volumes:
+      - /docker/code-server/config:/home/coder/.config
+      - /docker/code-server/projects:/home/coder/project
+      - /data:/data
+      - /datalvm:/datalvm
+    ports:
+      - "127.0.0.1:6666:8080"

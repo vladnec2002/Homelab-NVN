@@ -1,0 +1,15 @@
+services:
+  filebrowser:
+    image: filebrowser/filebrowser:latest
+    container_name: filebrowser
+    restart: unless-stopped
+    ports:
+      - "8095:80"
+    volumes:
+      - /:/srv/root
+      - /data:/srv/data
+      - /mnt/storage:/srv/storage
+      - /docker:/srv/docker
+      - /datalvm:/srv/datalvm
+      - /docker/filebrowser/config:/config
+      - /docker/filebrowser/database:/database

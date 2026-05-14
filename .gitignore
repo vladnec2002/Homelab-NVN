@@ -1,0 +1,362 @@
+# =========================
+# Git / system / editor junk
+# =========================
+.git/
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
+*.swo
+
+
+# =========================
+# Environment files / secrets
+# =========================
+.env
+.env.*
+*.env
+**/.env
+**/.env.*
+!**/.env.example
+!**/env.example
+
+secrets/
+secret/
+**/secrets/
+**/secret/
+
+*token*
+*secret*
+*password*
+*passwd*
+*credential*
+*credentials*
+*apikey*
+*api_key*
+*access_key*
+*private_key*
+*auth*
+*bearer*
+
+*.key
+*.pem
+*.crt
+*.cer
+*.p12
+*.pfx
+*.jks
+id_rsa*
+id_ed25519*
+authorized_keys
+known_hosts
+.htpasswd
+acme.json
+
+
+# =========================
+# Databases
+# =========================
+*.db
+*.db-shm
+*.db-wal
+*.sqlite
+*.sqlite3
+*.sqlite-shm
+*.sqlite-wal
+*.mv.db
+*.sqlitedb
+*.sqlitedb-shm
+*.sqlitedb-wal
+*.sql
+*.dump
+*.dump.gz
+
+
+# =========================
+# Logs / runtime / temp
+# =========================
+*.log
+*.pid
+*.lock
+logs/
+log/
+**/logs/
+**/log/
+tmp/
+temp/
+**/tmp/
+**/temp/
+run/
+runtime/
+**/run/
+**/runtime/
+cache/
+.caches/
+**/cache/
+**/.cache/
+
+
+# =========================
+# Backups / archives
+# =========================
+backup/
+backups/
+Backup/
+Backups/
+**/backup/
+**/backups/
+**/Backup/
+**/Backups/
+*backup*
+*Backup*
+*.bak
+*.backup
+*.old
+*.orig
+*.zip
+*.tar
+*.tar.gz
+*.tgz
+*.7z
+*.rar
+
+
+# =========================
+# Generic app data folders
+# =========================
+data/
+**/data/
+database/
+**/database/
+db/
+**/db/
+storage/
+**/storage/
+uploads/
+**/uploads/
+media/
+**/media/
+library/
+**/library/
+metadata/
+**/metadata/
+transcodes/
+**/transcodes/
+downloads/
+**/downloads/
+watch/
+**/watch/
+
+
+# =========================
+# Large/personal media files
+# =========================
+*.mp4
+*.mkv
+*.avi
+*.mov
+*.wmv
+*.flv
+*.webm
+*.mp3
+*.flac
+*.wav
+*.aac
+*.ogg
+*.jpg
+*.jpeg
+*.png
+*.gif
+*.webp
+*.heic
+*.svg
+*.pdf
+*.iso
+
+
+# =========================
+# Docker runtime leftovers
+# =========================
+docker-compose.override.yml
+compose.override.yml
+*.override.yml
+
+
+# =========================
+# Your service-specific ignores
+# =========================
+
+# Immich
+/immich/.env
+/immich/postgres/
+/immich/library/
+/immich/upload/
+/immich/uploads/
+/immich/thumbs/
+/immich/encoded-video/
+/immich/backups/
+
+# Code Server
+/code-server/.env
+/code-server/config/
+/code-server/data/
+
+# Homepage
+/homepage/.env
+/homepage/config/.env
+/homepage/config/.env*
+!/homepage/config/.env.example
+
+# Filebrowser
+/filebrowser/database/
+/filebrowser/*.db
+/filebrowser/config/settings.json
+/filebrowser/settings.json
+
+# Jellyfin
+/jellyfin/.env
+/jellyfin/cache/
+/jellyfin/config/data/
+/jellyfin/config/log/
+/jellyfin/config/logs/
+/jellyfin/config/metadata/
+/jellyfin/config/root/
+/jellyfin/config/transcodes/
+/jellyfin/config/.jellyfin-config
+/jellyfin/jellyseerr-backup-*/
+/jellyfin/jellyseerr/*.db
+/jellyfin/jellyseerr/*.sqlite
+/jellyfin/jellyseerr/logs/
+/jellyfin/jellyseerr/cache/
+
+# Media torrent stack: Sonarr/Radarr/Prowlarr/Lidarr/NZBGet
+/mediatorrent/.env
+/mediatorrent/*/*.db
+/mediatorrent/*/*.db-shm
+/mediatorrent/*/*.db-wal
+/mediatorrent/*/logs.db
+/mediatorrent/*/logs.db-shm
+/mediatorrent/*/logs.db-wal
+/mediatorrent/*/*.pid
+/mediatorrent/*/*.log
+/mediatorrent/*/logs/
+/mediatorrent/*/Backups/
+/mediatorrent/*/backup/
+/mediatorrent/*/MediaCover/
+/mediatorrent/*/UpdateLogs/
+/mediatorrent/*/Sentry/
+/mediatorrent/*/nzbget.log
+
+# Node-RED
+/nodered/.env
+/nodered/data/
+/nodered/credentials.json
+/nodered/.config.runtime.json
+
+# Obsidian
+/obsidian/.env
+/obsidian/data/
+/obsidian/vault/
+/obsidian/**/*.md
+
+# Plex
+/plex/.env
+/plex/config/
+/plex/transcode/
+/plex/Library/
+/plex/Media/
+
+# Portainer
+/portainer/data/
+/portainer/*.db
+/portainer/*.key
+/portainer/*.pub
+
+# Portracker
+/portracker/portracker-data/
+/portracker/*.db
+
+# Proxy / reverse proxy
+/proxy/.env
+/proxy/acme.json
+/proxy/certs/
+/proxy/certificates/
+/proxy/letsencrypt/
+/proxy/ssl/
+/proxy/*.pem
+/proxy/*.key
+/proxy/*.crt
+/proxy/.htpasswd
+
+# Speedtest
+/speedtest/.env
+/speedtest/config/database.sqlite
+/speedtest/config/*.sqlite
+/speedtest/config/.migrations
+
+# Stirling PDF
+/stirlingpdf/stirling-data/*.db
+/stirlingpdf/stirling-data/*.mv.db
+/stirlingpdf/stirling-data/logs/
+/stirlingpdf/stirling-data/customFiles/
+/stirlingpdf/stirling-data/tessdata/
+/stirlingpdf/stirling-data/pipeline/
+/stirlingpdf/stirling-data/uploads/
+
+# Syncthing
+/syncthing/.env
+/syncthing/config/
+/syncthing/data/
+
+# TeamSpeak
+/teamspeak/data/
+/teamspeak/teamspeak-data/
+/teamspeak/**/*.sqlitedb
+/teamspeak/**/*key*
+
+# Uptime Kuma
+/uptime-kuma/data/
+/uptime-kuma/.env
+
+# Firefox container
+/firefox/firefox-config/.cache/
+/firefox/firefox-config/.mozilla/
+/firefox/firefox-config/Downloads/
+/firefox/firefox-config/.config/
+/firefox/firefox-config/.pki/
+
+# Termix SSH
+/termixssh/.env
+/termixssh/data/
+/termixssh/config/
+
+# Extra hard ignores for permission-denied app data
+/jellyfin/jellystat/
+/portainer/data/
+/teamspeak/data/
+/teamspeak/teamspeak-data/
+/immich/postgres/
+/plex/plex/
+git-untracked-files.txt
+
+# Extra discovered runtime/secrets
+/firefox/firefox-config/.dbus/
+/jellyfin/config/.aspnet/
+/jellyfin/jellyseerr/settings.json
+/jellyfin/jellyseerr/settings.old.json
+
+/mediatorrent/*/asp/
+/mediatorrent/prowlarr/Definitions/
+/mediatorrent/qbittorrent/qBittorrent/GeoDB/
+/mediatorrent/qbittorrent/qBittorrent/qBittorrent-data.conf
+
+/stirlingpdf/stirling-data/settings.yml
+/stirlingpdf/stirling-data/custom_settings.yml
+
+git-untracked-files.txt
+
+# Extra Jellyfin runtime config - skip for first public repo
+/jellyfin/config/*.xml
+/jellyfin/config/*.json
+/jellyfin/jellyseerr/

@@ -1,0 +1,19 @@
+services:
+  homepage:
+    image: ghcr.io/gethomepage/homepage:latest
+    container_name: homepage
+    ports:
+      - 3005:3000
+    env_file:
+      - .env
+    volumes:
+      - ./config:/app/config
+      - ./icons:/app/public/icons
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - /:/hostroot:ro
+      - /data:/data:ro
+      - /datalvm:/datalvm:ro
+      - /mnt/storage:/mnt/storage:ro
+    environment:
+      HOMEPAGE_ALLOWED_HOSTS: homepage.nvnserver.work,mainserver:3005,192.168.0.137:3005,localhost:3005,127.0.0.1:3005
+    restart: unless-stopped

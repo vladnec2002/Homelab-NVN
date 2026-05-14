@@ -1,0 +1,79 @@
+services:
+  jellyfin:
+    image: lscr.io/linuxserver/jellyfin:latest
+    container_name: jellyfin
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Romania/Bucharest
+      - JELLYFIN_PublishedServerUrl=${JELLYFIN_PUBLISHED_SERVER_URL}
+      - UMASK=002
+    volumes:
+      - ./config:/config
+      - /data:/data
+      #- /data/movies:/movies:ro
+      #- /data/movies4k:/movies4k:ro
+      
+    devices:
+      - /dev/dri:/dev/dri #Use for Intel QuickSync
+    ports:
+      - 8096:8096
+      - 7359:7359/udp #Service Discovery
+      - 1900:1900/udp #Client Discovery
+    restart: unless-stopped
+  
+  #jellyseerr:
+    #container_name: jellyseerr
+    #image: fallenbagel/jellyseerr:latest
+    #environment:
+      #- PUID=1000
+      #- PGID=1000
+      #- TZ=Romania/Bucharest
+      #- UMASK=002
+    #volumes:
+      #- ./jellyseerr:/app/config
+    #ports:
+      #- 5055:5055
+    #restart: unless-stopped
+
+  jellyseerr:
+    container_name: jellyseerr
+    image: ghcr.io/seerr-team/seerr:latest
+    init: true
+    environment:
+      - TZ=Europe/Bucharest
+    volumes:
+      - ./jellyseerr:/app/config
+    ports:
+      - 5055:5055
+    restart: unless-stopped
+
+  jellystat-db:
+    image: postgres:15.2
+    container_name: jellystat-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ${JELLYSTAT_POSTGRES_DB}
+      POSTGRES_USER: ${JELLYSTAT_POSTGRES_USER}
+      POSTGRES_PASSWORD: ${JELLYSTAT_POSTGRES_PASSWORD}
+    volumes:
+      - ./jellystat/postgres:/var/lib/postgresql/data
+
+  jellystat:
+    image: cyfershepard/jellystat:latest
+    container_name: jellystat
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ${JELLYSTAT_POSTGRES_DB}
+      POSTGRES_USER: ${JELLYSTAT_POSTGRES_USER}
+      POSTGRES_PASSWORD: ${JELLYSTAT_POSTGRES_PASSWORD}
+      POSTGRES_IP: jellystat-db
+      POSTGRES_PORT: 5432
+      JWT_SECRET: ${JELLYSTAT_JWT_SECRET}
+      TZ: Europe/Bucharest
+    volumes:
+      - ./jellystat/backup-data:/app/backend/backup-data
+    ports:
+      - "3001:3000"
+    depends_on:
+      - jellystat-db

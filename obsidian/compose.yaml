@@ -1,0 +1,18 @@
+services:
+  obsidian:
+    image: lscr.io/linuxserver/obsidian:latest
+    container_name: obsidian
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Romania/Bucharest
+    volumes:
+      - /home/mrp/docker/obsidian:/config
+      - /data:/data
+    devices:
+      - /dev/dri:/dev/dri
+    ports:
+      - 3100:3000
+      - 3101:3001
+    shm_size: "1gb"
+    restart: unless-stopped
